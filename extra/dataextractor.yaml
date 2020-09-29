@@ -53,3 +53,15 @@ features:
     type: 0
     #filter: choose what features to show. Valid features: [Label, Open, High, Low , Volume, stocK, stocD, stocSD, Momentum, ROC, LWR, AOosci, Disp5, Disp10, OSCP, CCI, RSI, OBV, MA, BIAS6, PSY12, ASY5, ASY4, ASY3, ASY2, ASY1]
     filter: [Label, Open, High, Low , Volume, stocK, stocD, stocSD, Momentum, ROC, LWR, AOosci, Disp5, Disp10, OSCP, CCI, RSI, OBV, MA, BIAS6, PSY12, ASY5, ASY4, ASY3, ASY2, ASY1]
+    
+# DATA SPLIT
+split:
+    scalerName: SS
+    trainTestPercentage: 0.8
+    trainTestValidate: {
+        train: 0.7,
+        test: 0.15,
+        validate: 0.15
+    }
+    
+    
