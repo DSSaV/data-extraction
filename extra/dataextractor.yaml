@@ -2,7 +2,7 @@
 # RAW DATA PROCESSING
 data: 
     #useYfinance: When true, it uses yfinance to fetch stocks. When false, it uses crypto data 
-    useYfinance: false
+    useYfinance: true
     #yfinance: parameters for Yfinance data loading
     yfinance: {
         #stock: What stock to use
@@ -47,6 +47,9 @@ processing:
 
 # FEATURE EXTRATION
 features:
-    add: [SK, SD, Momentum]
+    #window: timeframe for calculations. Only postive values
     window: 14
-    filter: [Close, Momentum, SD, Label]
+    #type: 0 = all features, 1 = type 1 features, 2 = type 2 features
+    type: 0
+    #filter: choose what features to show. Valid features: [Label, Open, High, Low , Volume, stocK, stocD, stocSD, Momentum, ROC, LWR, AOosci, Disp5, Disp10, OSCP, CCI, RSI, OBV, MA, BIAS6, PSY12, ASY5, ASY4, ASY3, ASY2, ASY1]
+    filter: [Label, Open, High, Low , Volume, stocK, stocD, stocSD, Momentum, ROC, LWR, AOosci, Disp5, Disp10, OSCP, CCI, RSI, OBV, MA, BIAS6, PSY12, ASY5, ASY4, ASY3, ASY2, ASY1]
