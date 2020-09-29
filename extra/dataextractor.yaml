@@ -56,7 +56,7 @@ features:
     
 # DATA SPLIT
 split:
-    scalerName: SS
+    scalerName: MM
     trainTestPercentage: 0.8
     trainTestValidate: {
         train: 0.7,
