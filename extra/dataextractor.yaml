@@ -1,0 +1,52 @@
+
+# RAW DATA PROCESSING
+data: 
+    #useYfinance: When true, it uses yfinance to fetch stocks. When false, it uses crypto data 
+    useYfinance: false
+    #yfinance: parameters for Yfinance data loading
+    yfinance: {
+        #stock: What stock to use
+        stock: NVDA,
+        #start: start date for data (format: yyyy-mm-dd)
+        start: 2019-01-08,
+        #end: end date for data (format: yyyy-mm-dd)
+        end: 2020-01-08,
+        #interval: valid intervals: 1d,5d,1wk,1mo,3mo. (Intraday data only available for past 60 days (intervals: 1m,2m,5m,15m,30m,60m,90m) )
+        interval: 1d
+    }
+    #binance: parameters for crypto data loading
+    binance: {
+        #coin: in format of coinname (https://www.binance.com/en/trade/BTC_USDT) 
+        coin: BTCUSDT,
+        #interval: interval for data. Valid intervals: 1m, 5m, 1h, 1d
+        interval: 1d
+    }
+
+#RAW DATA PROCESSING    
+processing:
+    # resample: when true, resample with parameters below
+    resample: true
+    sampling: {
+        #time: specifies what to resample to. Valid values: T, H, D, M, Y
+        time: D,
+        #aggregate: parameters for aggregation logic per column
+        aggregate: {
+            Open: first,
+            High: max,
+            Low: min,
+            Close: last,
+            Volume: sum
+        }
+    }
+    #label: parameters for label creation
+    label:
+        #source: What column should label be built from
+        source: Close
+        #Shift: Negative values shifts from future, positive values shift from past
+        shift: -1 
+
+# FEATURE EXTRATION
+features:
+    add: [SK, SD, Momentum]
+    window: 14
+    filter: [Close, Momentum, SD, Label]
